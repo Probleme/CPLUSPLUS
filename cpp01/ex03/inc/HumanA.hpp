@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 18:05:11 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/10/19 00:21:47 by ataouaf          ###   ########.fr       */
+/*   Created: 2023/10/22 19:08:17 by ataouaf           #+#    #+#             */
+/*   Updated: 2023/10/22 20:06:09 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-int main(int argc, char **argv)
+#include "Weapon.hpp"
+
+class HumanA
 {
-    if(argc > 1)
-    {
-        for(int i = 1; i < argc; i++)
-            for(int j = 0; argv[i][j]; j++)
-                std::cout << (char)std::toupper(argv[i][j]);
-        std::cout << std::endl;
-    }
-    else if (argc == 1)
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-}
+    private:
+        std::string const _name;
+        Weapon const &_weapon;
+    public:
+        HumanA(std::string const& name, Weapon const& weapon);
+        ~HumanA();
+        void attack(void) const;
+};
+#endif

@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 00:01:23 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/10/17 00:02:11 by ataouaf          ###   ########.fr       */
+/*   Created: 2023/10/22 19:09:40 by ataouaf           #+#    #+#             */
+/*   Updated: 2023/10/22 20:07:10 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
+#include "../inc/HumanA.hpp"
 
-PhoneBook::PhoneBook(void){
-    return ;
+HumanA::HumanA(std::string const& name, Weapon const& weapon) : _name(name), _weapon(weapon)
+{
+    std::cout << "HumanA is born" << std::endl;
 }
 
-PhoneBook::~PhoneBook(void){
-    return ;
+HumanA::~HumanA()
+{
+    std::cout << "HumanA is died" << std::endl;
 }
 
-void    PhoneBook::addContact(void){
-    return ;
-}
-
-void    PhoneBook::searchContact(void){
-    return ;
-}
-
-void    PhoneBook::printContact(void){
-    return ;
+void HumanA::attack(void) const
+{
+    std::cout << this->_name << " attacks with his " << this->_weapon.getType() << std::endl;
 }

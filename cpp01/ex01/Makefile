@@ -5,17 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/15 20:29:59 by ataouaf           #+#    #+#              #
-#    Updated: 2023/10/20 03:42:01 by ataouaf          ###   ########.fr        #
+#    Created: 2023/10/22 15:45:23 by ataouaf           #+#    #+#              #
+#    Updated: 2023/10/22 19:13:19 by ataouaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 CC = c++ -Wall -Wextra -Werror -std=c++98
-NAME = phonebook
+NAME = Zombie
 OBJECTS = ./obj
 INCLUDES = ./inc
-SRCS = $(addprefix srcs/, main.cpp Contact.cpp PhoneBook.cpp)
+SRCS = $(addprefix src/, main.cpp zombieHorde.cpp Zombie.cpp )
 OBJS = $(addprefix $(OBJECTS)/, $(SRCS:.cpp=.o))
 
 all: $(NAME)
@@ -23,7 +22,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $@
 
-$(OBJECTS)/%.o: %.cpp $(INCLUDES)/Contact.hpp $(INCLUDES)/PhoneBook.hpp
+$(OBJECTS)/%.o: %.cpp $(INCLUDES)/Zombie.hpp
 	@mkdir -p $(dir $@)
 	$(CC) -c $< -o $@
 
