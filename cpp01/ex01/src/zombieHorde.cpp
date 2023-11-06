@@ -12,10 +12,12 @@
 
 #include "../inc/Zombie.hpp"
 
-Zombie* zombieHorse(int N, std::string name)
+Zombie* zombieHorde(int N, std::string name)
 {
-    Zombie *zombies = new Zombie[N];
+    Zombie *zombies = new(std::nothrow) Zombie[N];
+    if (!zombies)
+        return NULL;
     for (int i = 0; i < N; i++)
-        zombies[i].setName(name);
+        zombies[i].announce(name);
     return (zombies);
 }

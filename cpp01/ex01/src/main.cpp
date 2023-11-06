@@ -14,9 +14,10 @@
 
 int main()
 {
-    Zombie *zombies = zombieHorse(10, "Zombie");
+    Zombie *zombies = zombieHorde(10, "Zombie");
     for (int i = 0; i < 10; i++)
         zombies[i].announce();
     delete [] zombies;
+    zombies = nullptr;
     return (0);
 }

@@ -12,22 +12,6 @@
 
 #include "../inc/Zombie.hpp"
 
-void Zombie::announce()
-{
-    std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
-}
 
-Zombie::Zombie()
-{
-    std::cout << "Zombie is born" << std::endl;
-}
+Zombie::Zombie(){}
 
-Zombie::~Zombie()
-{
-    std::cout << this->_name << " is dead" << std::endl;
-}
-
-void Zombie::setName(std::string const name)
-{
-    this->_name = name;
-}

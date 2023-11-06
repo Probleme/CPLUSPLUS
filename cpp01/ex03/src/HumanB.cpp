@@ -12,15 +12,9 @@
 
 #include "../inc/HumanB.hpp"
 
-HumanB::HumanB(std::string const name) : _name(name)
-{
-	std::cout << "HumanB is Born" << std::endl;
-}
+HumanB::HumanB(std::string const name) : _name(name){}
 
-HumanB::~HumanB()
-{
-    std::cout << "HumanB is died" << std::endl;
-}
+HumanB::~HumanB(){}
 
 void HumanB::attack(void) const
 {

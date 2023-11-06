@@ -22,11 +22,11 @@ class Zombie
         std::string _name;
     public:
         Zombie();
-        ~Zombie();
-        void setName(std::string const _name);
-        void announce();
+        ~Zombie(){ std::cout << this->_name << " has been destroyed" << std::endl; };
+        void announce(std::string const _name){this->_name = _name;};
+        void announce(void){std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;};
 };
 
-Zombie* zombieHorse(int N, std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

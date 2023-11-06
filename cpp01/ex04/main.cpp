@@ -37,11 +37,15 @@ int main(int argc, char **argv)
         return (1);
     }
     std::string line;
-    while (std::getline(ifs, line))
-    {
-        while (line.find(s1) != std::string::npos)
-            line.replace(line.find(s1), s1.length(), s2);
-        ofs << line << std::endl;
+    if (!s1.empty() && s1 != s2) {
+        while (std::getline(ifs, line)) {
+            while (line.find(s1) != std::string::npos)
+                line.replace(line.find(s1), s1.length(), s2);
+            ofs << line << std::endl;
+        }
+    } else {
+        while (std::getline(ifs, line))
+            ofs << line << std::endl;
     }
     ifs.close();
     ofs.close();

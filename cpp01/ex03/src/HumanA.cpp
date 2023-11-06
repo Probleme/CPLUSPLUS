@@ -12,17 +12,11 @@
 
 #include "../inc/HumanA.hpp"
 
-HumanA::HumanA(std::string const& name, Weapon const& weapon) : _name(name), _weapon(weapon)
-{
-    std::cout << "HumanA is born" << std::endl;
-}
+HumanA::HumanA(std::string const& name, Weapon const& weapon) : _name(name), _weapon(weapon){}
 
-HumanA::~HumanA()
-{
-    std::cout << "HumanA is died" << std::endl;
-}
+HumanA::~HumanA(){}
 
 void HumanA::attack(void) const
 {
-    std::cout << this->_name << " attacks with his " << this->_weapon.getType() << std::endl;
+    std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
 }

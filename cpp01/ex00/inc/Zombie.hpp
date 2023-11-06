@@ -22,8 +22,8 @@ class Zombie
         std::string _name;
     public:
         Zombie(std::string name) : _name(name) {};
-        ~Zombie() { std::cout << this->_name << " has been detroyed" << std::endl; };
-        void announce();
+        ~Zombie() { std::cout << this->_name << " has been destroyed" << std::endl; };
+        void announce(void);
 };
 
 Zombie* newZombie(std::string name);
