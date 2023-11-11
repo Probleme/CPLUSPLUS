@@ -12,14 +12,12 @@
 
 #include "../inc/Harl.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
-    if (argc != 2)
-    {
-        std::cout << "Usage: ./harl [DEBUG|INFO|WARNING|ERROR]" << std::endl;
-        return 1;
-    }
     Harl harl;
-    harl.complain(argv[1]);
+    harl.complain("DEBUG");
+    harl.complain("INFO");
+    harl.complain("WARNING");
+    harl.complain("ERROR");
     return 0;
 }

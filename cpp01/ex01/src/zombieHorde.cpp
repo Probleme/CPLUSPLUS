@@ -18,6 +18,6 @@ Zombie* zombieHorde(int N, std::string name)
     if (!zombies)
         return NULL;
     for (int i = 0; i < N; i++)
-        zombies[i].announce(name);
+        zombies[i].setName(name);
     return (zombies);
 }

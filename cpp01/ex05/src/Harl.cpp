@@ -40,23 +40,9 @@ void Harl::complain(std::string level)
 {
     void (Harl::*ptr[4])() const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    if (level == levels[0] || level == levels[1] || level == levels[2] || level == levels[3])
+    for (int i = 0; i < 4; i++)
     {
-        switch (level[0])
-        {
-            case 'D':
-                (this->*ptr[0])();
-                break;
-            case 'I':
-                (this->*ptr[1])();
-                break;
-            case 'W':
-                (this->*ptr[2])();
-                break;
-            case 'E':
-                (this->*ptr[3])();
-        }
+        if (levels[i] == level)
+            (this->*ptr[i])();
     }
-    else
-        std::cout << "[ UNKNOWN ]" << std::endl << "Probably complaining about insignificant problems" << std::endl;
 }
