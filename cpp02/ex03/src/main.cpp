@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 18:53:45 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/16 01:57:38 by ataouaf          ###   ########.fr       */
+/*   Created: 2023/11/16 03:55:13 by ataouaf           #+#    #+#             */
+/*   Updated: 2023/11/17 03:48:02 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
 
-#include <iostream>
-#include <string>
+#include "../inc/Fixed.hpp"
+#include "../inc/Point.hpp"
 
-class Fixed{
-    private :
-        int _fixedPointValue;
-        static const int _fractionalBits = 8;
-    public :
-        Fixed();
-        Fixed(const Fixed& other);
-        Fixed& operator=(const Fixed& other);
-        ~Fixed();
-        int getRawBits(void) const;
-        void setRawBits(int const raw);
-};
+bool bsp(Point const a, Point const b, Point const c, Point const point);
 
-#endif
+int main()
+{
+    Point a(0, 0);
+    Point b(20, 0);
+    Point c(10, 30);
+    Point point(0, 15);
+    std::cout << bsp(a, b, c, point) << std::endl;
+    return 0;
+}
