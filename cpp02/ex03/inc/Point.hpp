@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 03:07:14 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/17 03:48:17 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/11/19 05:25:38 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Point{
         Point& operator=(const Point& other);
         ~Point();
         Point(const float x, const float y);
-        float getX() const;
-        float getY() const;
+        Fixed getX() const;
+        Fixed getY() const;
 };
 
 #endif

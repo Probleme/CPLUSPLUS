@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 03:06:54 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/17 03:48:05 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/11/19 05:26:09 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ Point::~Point(){}
 
 Point::Point(const float x, const float y) : _x(x), _y(y){}
 
-float Point::getX() const{
-    return _x.toFloat();
+Fixed Point::getX() const{
+    return _x;
 }
 
-float Point::getY() const{
-    return _y.toFloat();
+Fixed Point::getY() const{
+    return _y;
 }

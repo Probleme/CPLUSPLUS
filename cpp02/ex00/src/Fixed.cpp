@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 18:53:52 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/11 00:09:32 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/11/17 08:08:07 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Fixed::Fixed() : _fixedPointValue(0)
 {
     std::cout << "Default constructor called" << std::endl;
-};
+}
 
 Fixed::Fixed(const Fixed& other){
     std::cout << "Copy constructor called" << std::endl;
