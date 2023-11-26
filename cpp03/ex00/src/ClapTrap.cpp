@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 03:50:29 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/25 01:54:08 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/11/26 00:14:52 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
     std::cout << "ClapTrap constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &other)
+ClapTrap::ClapTrap(ClapTrap const &other) 
 {
     std::cout << "ClapTrap copy constructor called" << std::endl;
     *this = other;
@@ -48,6 +48,16 @@ ClapTrap& ClapTrap::operator=(ClapTrap const &other)
 
 void ClapTrap::attack(std::string const &target)
 {
+    if (target.empty())
+    {
+        std::cout << "ClapTrap " << this->_name << " can't attack empty target!" << std::endl;
+        return ;
+    }
+    if (this->_name.empty())
+    {
+        std::cout << "ClapTrap can't attack " << target << " without name!" << std::endl;
+        return ;
+    }
     if (this->_energyPoints > 0 && this->_hitPoints > 0)
     {
         std::cout << "ClapTrap " << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
@@ -59,6 +69,11 @@ void ClapTrap::attack(std::string const &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+    if (this->_name.empty())
+    {
+        std::cout << "ClapTrap can't take damage without name!" << std::endl;
+        return ;
+    }
     if ((int)amount < 0)
     {
         std::cout << "ClapTrap " << this->_name << " can't take negative damage!" << std::endl;
@@ -75,6 +90,11 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+    if (this->_name.empty())
+    {
+        std::cout << "ClapTrap can't be repaired without name!" << std::endl;
+        return ;
+    }
     if ((int)amount < 0)
     {
         std::cout << "ClapTrap " << this->_name << " can't be repaired with negative amount!" << std::endl;

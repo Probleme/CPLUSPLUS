@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 04:22:12 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/24 23:54:43 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/11/26 00:49:01 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,27 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &scavTrap)
         this->_attackDamage = scavTrap._attackDamage;
     }
     return (*this);
+}
+
+void ScavTrap::attack(std::string const &target)
+{
+    if (target.empty())
+    {
+        std::cout << "ScavTrap " << this->_name << " can't attack empty target!" << std::endl;
+        return ;
+    }
+    if (this->_name.empty())
+    {
+        std::cout << "ScavTrap can't attack " << target << " without name!" << std::endl;
+        return ;
+    }
+    if (this->_energyPoints > 0 && this->_hitPoints > 0)
+    {
+        std::cout << "ScavTrap " << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+        this->_energyPoints--;
+    }
+    else
+        std::cout << "ScavTrap " << this->_name << " has no energy points!" << std::endl;
 }
 
 void ScavTrap::guardGate()
