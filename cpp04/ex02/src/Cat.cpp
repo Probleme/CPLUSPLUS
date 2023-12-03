@@ -6,19 +6,19 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:40:46 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/12/03 15:49:33 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/03 15:49:22 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Cat.hpp"
 
-Cat::Cat() : Animal(){
+Cat::Cat(){
     std::cout << "Cat default constructor called" << std::endl;
     this->type = "Cat";
     this->_brain = new Brain();
 }
 
-Cat::Cat(const Cat &c) : Animal(c){
+Cat::Cat(const Cat &c){
     std::cout << "Cat copy constructor called" << std::endl;
     *this = c;
 }

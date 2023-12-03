@@ -6,34 +6,26 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:42:18 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/12/03 15:57:18 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/03 16:06:07 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/AAnimal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
-#include "../inc/WrongAnimal.hpp"
-#include "../inc/WrongCat.hpp"
 #include "../inc/Brain.hpp"
 
 int main()
 {
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-
-    delete j;
+    const AAnimal* j = new Dog();
+    const AAnimal* i = new Cat();
+    std::cout << std::endl;
     delete i;
-
+    delete j;
+    std::cout << std::endl;
     Dog basic;
     {
         Dog tmp = basic;
     }
-
-    const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
-    for ( int i = 0; i < 4; i++ ) {
-        delete animals[i];
-    }
-
     return 0;
 }

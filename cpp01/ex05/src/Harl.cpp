@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 22:54:03 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/10/22 23:34:41 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/11/26 09:00:41 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void Harl::complain(std::string level)
     void (Harl::*ptr[4])() const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     for (int i = 0; i < 4; i++)
-    {
+    {  
         if (levels[i] == level)
             (this->*ptr[i])();
     }

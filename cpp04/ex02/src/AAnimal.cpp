@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:31:23 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/26 05:58:19 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/03 16:06:59 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
+#include "../inc/AAnimal.hpp"
 
-Animal::Animal() : type("Animal"){
+AAnimal::AAnimal() : type("Animal"){
     std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &a) : type(a.type){
+AAnimal::AAnimal(const AAnimal &a) : type(a.type){
     std::cout << "Animal copy constructor called" << std::endl;
     *this = a;
 }
 
-Animal& Animal::operator=(const Animal &a){
+AAnimal& AAnimal::operator=(const AAnimal &a){
     std::cout << "Animal assignation operator called" << std::endl;
-    if (this != &a)
-        this->type = a.type;
+    this->type = a.type;
     return *this;
 }
 
-Animal::~Animal(){
+AAnimal::~AAnimal(){
     std::cout << "Animal destructor called" << std::endl;
 }
 
-std::string Animal::getType() const{
+std::string AAnimal::getType() const{
     return this->type;
 }
 
-void Animal::makeSound() const{
+void AAnimal::makeSound() const{
     std::cout << "Animal sound" << std::endl;
 }

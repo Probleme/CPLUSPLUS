@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/24 09:27:13 by ataouaf           #+#    #+#              #
-#    Updated: 2023/11/26 04:30:10 by ataouaf          ###   ########.fr        #
+#    Created: 2023/11/26 04:54:07 by ataouaf           #+#    #+#              #
+#    Updated: 2023/12/03 16:06:21 by ataouaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++ -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
-NAME = Animal
+NAME = AAnimal
 OBJECTS = ./obj
 INCLUDES = ./inc
-SRCS = $(addprefix src/, main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp)
+SRCS = $(addprefix src/, main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp)
 OBJS = $(addprefix $(OBJECTS)/, $(SRCS:.cpp=.o))
 
 all: $(NAME)
@@ -22,7 +22,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $@
 
-$(OBJECTS)/%.o: %.cpp $(INCLUDES)/Cat.hpp $(INCLUDES)/Dog.hpp $(INCLUDES)/Animal.hpp $(INCLUDES)/WrongAnimal.hpp $(INCLUDES)/WrongCat.hpp $(INCLUDES)/Brain.hpp
+$(OBJECTS)/%.o: %.cpp $(INCLUDES)/Cat.hpp $(INCLUDES)/Dog.hpp $(INCLUDES)/AAnimal.hpp $(INCLUDES)/WrongAnimal.hpp $(INCLUDES)/WrongCat.hpp $(INCLUDES)/Brain.hpp
 	@mkdir -p $(dir $@)
 	$(CC) -c $< -o $@
 
