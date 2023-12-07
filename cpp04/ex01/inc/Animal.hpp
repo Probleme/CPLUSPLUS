@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:29:21 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/26 04:12:00 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/04 10:47:43 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Animal{
         Animal& operator=(const Animal &a);
         virtual ~Animal();
         std::string getType() const;
-        void makeSound() const;
+        virtual void makeSound() const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 04:22:12 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/26 00:48:32 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/05 11:34:16 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,17 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
     std::cout << "ScavTrap Default constructor called" << std::endl;
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
     std::cout << "ScavTrap constructor called" << std::endl;
+    this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &scavTrap) : ClapTrap(scavTrap)

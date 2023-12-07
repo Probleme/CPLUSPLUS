@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:31:23 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/11/26 05:58:19 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/04 11:03:38 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,4 @@ Animal::~Animal(){
 
 std::string Animal::getType() const{
     return this->type;
-}
-
-void Animal::makeSound() const{
-    std::cout << "Animal sound" << std::endl;
 }

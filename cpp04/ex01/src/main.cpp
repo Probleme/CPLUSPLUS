@@ -6,13 +6,14 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:42:18 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/12/03 15:57:18 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/04 10:51:50 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Animal.hpp"
 #include "../inc/Dog.hpp"
 #include "../inc/Cat.hpp"
+
 #include "../inc/WrongAnimal.hpp"
 #include "../inc/WrongCat.hpp"
 #include "../inc/Brain.hpp"
@@ -34,6 +35,6 @@ int main()
     for ( int i = 0; i < 4; i++ ) {
         delete animals[i];
     }
-
+    
     return 0;
 }

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 09:42:18 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/12/04 10:46:57 by ataouaf          ###   ########.fr       */
+/*   Created: 2023/12/04 11:58:08 by ataouaf           #+#    #+#             */
+/*   Updated: 2023/12/04 11:59:06 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/AAnimal.hpp"
-#include "../inc/Dog.hpp"
-#include "../inc/Cat.hpp"
-#include "../inc/Brain.hpp"
+#ifndef CURE_HPP
+#define CURE_HPP
 
-int main()
-{
-    const AAnimal* j = new Dog();
-    const AAnimal* i = new Cat();
-    std::cout << std::endl;
-    delete i;
-    delete j;
-    std::cout << std::endl;
-    Dog basic;
-    {
-        Dog tmp = basic;
-    }
-    return 0;
-}
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+
+class Cure : public AMateria{
+    public:
+        Cure();
+        Cure(const Cure &c);
+        Cure& operator=(const Cure &c);
+        virtual ~Cure();
+        virtual AMateria* clone() const;
+        virtual void use(ICharacter& target);
+};
+
+#endif

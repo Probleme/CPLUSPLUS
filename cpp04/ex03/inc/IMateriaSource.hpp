@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 09:42:18 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/12/04 10:46:57 by ataouaf          ###   ########.fr       */
+/*   Created: 2023/12/04 14:40:39 by ataouaf           #+#    #+#             */
+/*   Updated: 2023/12/05 16:33:43 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/AAnimal.hpp"
-#include "../inc/Dog.hpp"
-#include "../inc/Cat.hpp"
-#include "../inc/Brain.hpp"
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
-int main()
-{
-    const AAnimal* j = new Dog();
-    const AAnimal* i = new Cat();
-    std::cout << std::endl;
-    delete i;
-    delete j;
-    std::cout << std::endl;
-    Dog basic;
-    {
-        Dog tmp = basic;
-    }
-    return 0;
-}
+#include "AMateria.hpp"
+
+class IMateriaSource{
+    public:
+        virtual ~IMateriaSource() {}
+        virtual void learnMateria(AMateria*) = 0;
+        virtual AMateria* createMateria(std::string const & type) = 0;
+};
+
+#endif

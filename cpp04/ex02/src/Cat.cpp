@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:40:46 by ataouaf           #+#    #+#             */
-/*   Updated: 2023/12/03 15:49:22 by ataouaf          ###   ########.fr       */
+/*   Updated: 2023/12/04 10:52:50 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ Cat::Cat(){
 
 Cat::Cat(const Cat &c){
     std::cout << "Cat copy constructor called" << std::endl;
-    *this = c;
+    this->type = c.type;
+    this->_brain = new Brain(*c._brain);
 }
 
 Cat& Cat::operator=(const Cat &c){
     std::cout << "Cat assignation operator called" << std::endl;
+    delete this->_brain;
     this->type = c.type;
     this->_brain = new Brain(*c._brain);
     return *this;
