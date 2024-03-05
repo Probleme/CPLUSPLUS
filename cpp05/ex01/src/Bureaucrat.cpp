@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 22:45:14 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 19:11:50 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:20:36 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(oth
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 {
     if (this != &other)
-        _grade = other._grade;
+        *this = other;
     return *this;
 }
 
@@ -89,6 +89,6 @@ void Bureaucrat::signForm(Form &form)
     }
     catch (std::exception &e)
     {
-        std::cout << _name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }

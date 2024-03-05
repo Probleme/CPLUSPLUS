@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 20:24:06 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/01 13:30:44 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,11 @@ std::ostream &operator<<(std::ostream &out, AForm const &form)
 {
     out << "Form " << form.getName() << " is ";
     if (form.getSigned())
+    {
         out << "signed";
+        return out;
+    }
     else
-        out << "not signed";
-    out << " and requires a grade " << form.getGradeToSign() << " to sign and a grade " << form.getGradeToExecute() << " to execute";
+        out << "not signed and requires a grade " << form.getGradeToSign() << " to sign and a grade " << form.getGradeToExecute() << " to execute";
     return out;
 }

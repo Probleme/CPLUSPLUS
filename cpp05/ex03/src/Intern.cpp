@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:40:15 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 20:43:56 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/05 17:10:02 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,32 @@ Intern::~Intern()
 
 AForm *Intern::makeForm(std::string const &name, std::string const &target)
 {
-    if (name == "shrubbery creation")
+    AForm *form = nullptr;
+    std::string forms[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+    for (int i = 0; i < 3; i++)
     {
-        std::cout << "Intern creates " << name << std::endl;
-        return new ShrubberyCreationForm(target);
+        if (forms[i] == name)
+        {
+            switch (i)
+            {
+                case 0:
+                    form = new RobotomyRequestForm(target);
+                    break;
+                case 1:
+                    form = new PresidentialPardonForm(target);
+                    break;
+                case 2:
+                    form = new ShrubberyCreationForm(target);
+                    break;
+            }
+            if (form != nullptr)
+            {
+                std::cout << "Intern creates " << form->getName() << std::endl;
+                return (form);
+            }
+        }
     }
-    else if (name == "robotomy request")
-    {
-        std::cout << "Intern creates " << name << std::endl;
-        return new RobotomyRequestForm(target);
-    }
-    else if (name == "presidential pardon")
-    {
-        std::cout << "Intern creates " << name << std::endl;
-        return new PresidentialPardonForm(target);
-    }
-    else
-        throw Intern::FormNotFoundException();
+    throw FormNotFoundException();
 }
 
 const char *Intern::FormNotFoundException::what() const throw()

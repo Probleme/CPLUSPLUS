@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 22:45:14 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 18:23:33 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:20:28 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name), _grade(oth
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 {
     if (this != &other)
-        _grade = other._grade;
+        *this = other;
     return *this;
 }
 

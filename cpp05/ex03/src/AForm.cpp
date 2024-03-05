@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 20:24:06 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:23:52 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ AForm::AForm(AForm const &other) : _name(other._name), _signed(other._signed), _
 AForm &AForm::operator=(AForm const &other)
 {
     if (this != &other)
-    {
-        _signed = other._signed;
-    }
+        *this = other;
     return *this;
 }
 
