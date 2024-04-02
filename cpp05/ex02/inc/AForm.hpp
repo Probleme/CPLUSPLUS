@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:27 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/03/01 15:22:27 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/31 18:28:04 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ class Bureaucrat;
 
 class AForm
 {
-    protected:
-        virtual void executeAction() const = 0;
     private:
         std::string const _name;
         bool _signed;
@@ -40,7 +38,7 @@ class AForm
         int getGradeToSign() const;
         int getGradeToExecute() const;
         void beSigned(Bureaucrat const &bureaucrat);
-        void execute(Bureaucrat const &bureaucrat) const;
+        virtual void execute(Bureaucrat const &bureaucrat) const = 0;
         class FormNotSignedException : public std::exception
         {
             public:

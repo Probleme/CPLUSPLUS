@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:16:33 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 20:18:11 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/05 17:41:56 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ class AForm;
 
 class PresidentialPardonForm : public AForm
 {
-    protected:
-        virtual void executeAction() const;
     private:
         std::string _target;
     public:
@@ -32,6 +30,7 @@ class PresidentialPardonForm : public AForm
         PresidentialPardonForm(PresidentialPardonForm const &other);
         PresidentialPardonForm &operator=(PresidentialPardonForm const &other);
         ~PresidentialPardonForm();
+        virtual void execute(Bureaucrat const &executor) const;
 };
 
 #endif

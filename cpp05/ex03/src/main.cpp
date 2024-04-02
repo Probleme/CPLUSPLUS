@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:46:38 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/03/05 17:14:47 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/02 12:47:50 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main()
         ppf = someRandomIntern.makeForm("presidential pardon", "Bender");
 
         b.signForm(*rrf);
+        rrf->beSigned(b);
         b.executeForm(*rrf);
         b.signForm(*scf);
         b.executeForm(*scf);

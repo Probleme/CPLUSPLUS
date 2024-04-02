@@ -6,20 +6,15 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 20:40:15 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/03/05 17:10:02 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/02 12:46:32 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Intern.hpp"
 
-Intern::Intern()
-{
-}
+Intern::Intern() {}
 
-Intern::Intern(Intern const &other)
-{
-    *this = other;
-}
+Intern::Intern(Intern const &other) {*this = other;}
 
 Intern &Intern::operator=(Intern const &other)
 {
@@ -27,9 +22,7 @@ Intern &Intern::operator=(Intern const &other)
     return *this;
 }
 
-Intern::~Intern()
-{
-}
+Intern::~Intern() {}
 
 AForm *Intern::makeForm(std::string const &name, std::string const &target)
 {
@@ -61,7 +54,4 @@ AForm *Intern::makeForm(std::string const &name, std::string const &target)
     throw FormNotFoundException();
 }
 
-const char *Intern::FormNotFoundException::what() const throw()
-{
-    return "Form not found";
-}
+const char *Intern::FormNotFoundException::what() const throw() {return "Form not found";}

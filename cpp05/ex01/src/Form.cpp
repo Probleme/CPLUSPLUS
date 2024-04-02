@@ -6,15 +6,13 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/03/05 16:21:36 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/03/05 18:01:12 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Form.hpp"
 
-Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150)
-{
-}
+Form::Form() : _name("default"), _signed(false), _gradeToSign(150), _gradeToExecute(150){}
 
 Form::Form(std::string const &name, int gradeToSign, int gradeToExecute) : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
@@ -24,9 +22,7 @@ Form::Form(std::string const &name, int gradeToSign, int gradeToExecute) : _name
         throw Form::GradeTooLowException();
 }
 
-Form::Form(Form const &other) : _name(other._name), _signed(other._signed), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
-{
-}
+Form::Form(Form const &other) : _name(other._name), _signed(other._signed), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute){}
 
 Form &Form::operator=(Form const &other)
 {
@@ -35,29 +31,15 @@ Form &Form::operator=(Form const &other)
     return *this;
 }
 
-Form::~Form()
-{
-}
+Form::~Form(){}
 
-std::string const &Form::getName() const
-{
-    return _name;
-}
+std::string const &Form::getName() const{return _name;}
 
-bool Form::getSigned() const
-{
-    return _signed;
-}
+bool Form::getSigned() const {return _signed;}
 
-int Form::getGradeToSign() const
-{
-    return _gradeToSign;
-}
+int Form::getGradeToSign() const {return _gradeToSign;}
 
-int Form::getGradeToExecute() const
-{
-    return _gradeToExecute;
-}
+int Form::getGradeToExecute() const {return _gradeToExecute;}
 
 void Form::beSigned(Bureaucrat const &bureaucrat)
 {
@@ -66,15 +48,9 @@ void Form::beSigned(Bureaucrat const &bureaucrat)
     _signed = true;
 }
 
-const char *Form::GradeTooHighException::what() const throw()
-{
-    return "Grade is too high";
-}
+const char *Form::GradeTooHighException::what() const throw() {return "Grade is too high";}
 
-const char *Form::GradeTooLowException::what() const throw()
-{
-    return "Grade is too low";
-}
+const char *Form::GradeTooLowException::what() const throw() {return "Grade is too low";}
 
 std::ostream &operator<<(std::ostream &out, Form const &form)
 {

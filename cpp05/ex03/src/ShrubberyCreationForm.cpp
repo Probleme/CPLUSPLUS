@@ -6,41 +6,51 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:32:08 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 20:18:31 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/01 16:22:03 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default")
-{
-}
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
-{
-}
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other), _target(other._target)
-{
-}
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) : AForm(other), _target(other._target) {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)
 {
     if (this != &other)
     {
-        AForm::operator=(other);
+        this->_target = other._target;
     }
     return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
-{
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void ShrubberyCreationForm::executeAction() const
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+    if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
+    if (!this->getSigned())
+        throw AForm::FormNotSignedException();
     std::ofstream file;
     file.open(_target + "_shrubbery");
-    file << "      _-_\n   /~~   ~~\\\n /~~         ~~\\\n{               }\n \\  _-     -_  /\n   ~  \\\\ //  ~\n_- -   | | _- _\n  _ -  | |   -_\n       // \\\n";
+    file << "      /\\      " << std::endl;
+    file << "     /\\*\\     " << std::endl;
+    file << "    /\\O\\*\\    " << std::endl;
+    file << "   /*/\\/\\/\\   " << std::endl;
+    file << "  /\\O\\/\\*\\/\\  " << std::endl;
+    file << " /\\*\\/\\*\\/\\/\\ " << std::endl;
+    file << "/\\O\\/\\/*/\\/O/\\" << std::endl;
+    file << "      ||      " << std::endl;
+    file << "      ||      " << std::endl;
+    file << "      ||      " << std::endl;
+    file << "   __ || __   " << std::endl;
+    file << "  \\######/  " << std::endl;
+    file << "   \\####/   " << std::endl;
+    file << "    \\##/    " << std::endl;
+    file << "     \\#/     " << std::endl;
     file.close();
 }
