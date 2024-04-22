@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:41:24 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/01 16:36:40 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 15:42:09 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
         throw AForm::GradeTooLowException();
     if (!this->getSigned())
         throw AForm::FormNotSignedException();
-    std::cout << "Drilling noises" << std::endl;
     if (rand() % 2)
         std::cout << _target << " has been robotomized successfully" << std::endl;
     else

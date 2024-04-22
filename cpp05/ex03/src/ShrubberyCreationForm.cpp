@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:32:08 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/01 16:22:03 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 13:42:54 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         throw AForm::GradeTooLowException();
     if (!this->getSigned())
         throw AForm::FormNotSignedException();
+    if (this->_target == "default")
+        throw AForm::FileNotOpenedException();
     std::ofstream file;
     file.open(_target + "_shrubbery");
     file << "      /\\      " << std::endl;

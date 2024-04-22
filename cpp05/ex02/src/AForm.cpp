@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/01 16:32:04 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:16:23 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ void AForm::beSigned(Bureaucrat const &bureaucrat)
 {
     if (bureaucrat.getGrade() > _gradeToSign)
         throw AForm::GradeTooLowException();
+    if (_signed)
+        throw AForm::FormAlreadySignedException();
     _signed = true;
 }
+
+const char *AForm::FormAlreadySignedException::what() const throw() {return "Form already signed";}
+
+const char *AForm::FileNotOpenedException::what() const throw() {return "File not opened";}
 
 const char *AForm::FormNotSignedException::what() const throw() { return "Form is not signed";}
 

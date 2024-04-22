@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 22:45:14 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/01 16:31:21 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 13:55:30 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ void Bureaucrat::signForm(AForm &form)
     try
     {
         form.beSigned(*this);
-        std::cout << _name << " signs " << form.getName() << std::endl;
+        std::cout << _name << " signed " << form.getName() << std::endl;
     }
     catch (std::exception &e)
     {
-        std::cout << _name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << _name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 

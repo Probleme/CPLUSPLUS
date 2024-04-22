@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:46:38 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/02/26 20:27:08 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:16:59 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,51 +32,23 @@ int main()
 
     try
     {
-        b2.incrementGrade();
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try
-    {
-        b1.decrementGrade();
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try
-    {
+        b1.signForm(f1);
         b1.signForm(f1);
         b1.executeForm(f1);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try
-    {
         b1.signForm(f2);
         b1.executeForm(f2);
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try
-    {
         b1.signForm(f3);
         b1.executeForm(f3);
+        b2.signForm(f1);
+        b2.executeForm(f1);
+        b2.signForm(f2);
+        b2.executeForm(f2);
+        b2.signForm(f3);
+        b2.executeForm(f3);
     }
-    catch (std::exception &e)
+    catch(const std::exception &e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << '\n';
     }
-
     return 0;
 }

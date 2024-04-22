@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:27 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/03/06 11:43:00 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:00:46 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ class AForm
         int getGradeToExecute() const;
         void beSigned(Bureaucrat const &bureaucrat);
         virtual void execute(Bureaucrat const &bureaucrat) const = 0;
+        class FormAlreadySignedException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
+        class FileNotOpenedException : public std::exception
+        {
+            public:
+                virtual const char *what() const throw();
+        };
         class FormNotSignedException : public std::exception
         {
             public:

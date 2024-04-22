@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:37:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/03/05 18:01:12 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/22 15:52:32 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void Form::beSigned(Bureaucrat const &bureaucrat)
 {
     if (bureaucrat.getGrade() > _gradeToSign)
         throw Form::GradeTooLowException();
+    if (_signed)
+        throw Form::FormAlreadySignedException();
     _signed = true;
 }
 
