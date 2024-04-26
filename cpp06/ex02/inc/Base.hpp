@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 13:29:37 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/20 14:34:32 by ataouaf          ###   ########.fr       */
+/*   Created: 2024/04/20 15:35:58 by ataouaf           #+#    #+#             */
+/*   Updated: 2024/04/21 15:10:46 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ScalarConverter.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
 
-int main(int ac, char **av)
+#include <iostream>
+#include <ctime>
+
+
+class Base
 {
-    if (ac != 2)
-    {
-        std::cout << "Usage: ./convert [value]" << std::endl;
-        return 1;
-    }
-    ScalarConverter::convert(av[1]);
-    return 0;
-}
+    public:
+        virtual ~Base();
+};
+
+#endif

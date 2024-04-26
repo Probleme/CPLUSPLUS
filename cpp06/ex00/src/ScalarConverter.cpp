@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:28:07 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/07 17:38:38 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/04/25 16:13:22 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,44 @@ ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::~ScalarConverter() {}
 
+bool isMixed(const std::string &str) {
+    bool hasDigit = false;
+    bool hasAlpha = false;
+    int countF = 0;
+    int countDot = 0;
+    char c;
+
+    for (size_t i = 0; i < str.size(); i++)
+    {
+        c = str[i];
+        if (std::isdigit(c) && c != '.')
+            hasDigit = true;
+        else if (std::isalpha(c) && c != 'f')
+            hasAlpha = true;
+        if (hasDigit && hasAlpha)
+            return true;
+        if (c == 'f')
+            countF++;
+        if (c == '.')
+            countDot++;
+    }
+    if (countF > 1 || countDot > 1 || str.back() == '.')
+        return true;
+    if (str.back() == 'f' && countDot == 0)
+        return true;
+    return false;
+}
+
 void ScalarConverter::convert(const std::string &str)
 {
+    if (isMixed(str))
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: nan" << std::endl;
+        return;
+    }
     if (str == "inff" || str == "-inff" || str == "+inff")
     {
         std::cout << "char: impossible" << std::endl;
@@ -38,7 +74,17 @@ void ScalarConverter::convert(const std::string &str)
     std::istringstream iss(str);
     int i;
     if (!(iss >> i))
-        std::cout << "impossible" << std::endl;
+    {
+        if (str.size() == 1)
+        {
+            if (std::isdigit(str[0]))
+                std::cout << "impossible" << std::endl;
+            else
+                std::cout << "'" << str[0] << "'" << std::endl;
+        }
+        else
+            std::cout << "impossible" << std::endl;
+    }
     else
     {
         if (i < 32 || i > 126)
@@ -47,12 +93,22 @@ void ScalarConverter::convert(const std::string &str)
             std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
     }
     std::cout << "int: ";
-    iss.clear(); // Clear any error flags
-    iss.str(str); // Reset stream with the original input string
-    if (!(iss >> i)) 
-        std::cout << "impossible" << std::endl;
+    iss.clear();
+    iss.str(str);
+    if (!(iss >> i))
+    {
+        if (str.size() == 1)
+        {
+            if (!std::isdigit(str[0]))
+                std::cout << static_cast<int>(str[0]) << std::endl;
+            else
+                std::cout << "impossible" << std::endl;
+        }
+        else
+            std::cout << "impossible" << std::endl;
+    }
     else
-        std::cout << i << std::endl;
+        std::cout << (i) << std::endl;
     std::cout << "float: ";
     iss.clear();
     iss.str(str);
@@ -61,7 +117,6 @@ void ScalarConverter::convert(const std::string &str)
     std::string strValue = iss.str();
     if (strValue.find("f") != std::string::npos)
         strValue = strValue.substr(0, strValue.size() - 1);
-    // now we need to clear the stream and reset it with strValue
     iss.clear();
     iss.str(strValue);
     if (!(iss >> f))

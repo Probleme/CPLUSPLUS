@@ -1,24 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 13:29:37 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/20 14:34:32 by ataouaf          ###   ########.fr       */
+/*   Created: 2024/04/20 17:26:19 by ataouaf           #+#    #+#             */
+/*   Updated: 2024/04/20 17:26:26 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ScalarConverter.hpp"
+#include "../inc/A.hpp"
 
-int main(int ac, char **av)
-{
-    if (ac != 2)
-    {
-        std::cout << "Usage: ./convert [value]" << std::endl;
-        return 1;
-    }
-    ScalarConverter::convert(av[1]);
-    return 0;
-}
+A::~A() {}

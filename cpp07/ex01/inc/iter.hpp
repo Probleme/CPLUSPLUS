@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 13:29:37 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/20 14:34:32 by ataouaf          ###   ########.fr       */
+/*   Created: 2024/04/25 17:50:35 by ataouaf           #+#    #+#             */
+/*   Updated: 2024/04/25 18:44:12 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ScalarConverter.hpp"
+#ifndef ITER_HPP
+#define ITER_HPP
 
-int main(int ac, char **av)
+#include <iostream>
+
+template <typename T>
+void iter(T *array, int size, void (*func)(T const &))
 {
-    if (ac != 2)
-    {
-        std::cout << "Usage: ./convert [value]" << std::endl;
-        return 1;
-    }
-    ScalarConverter::convert(av[1]);
-    return 0;
+    if (!array || size < 0 || !func)
+        return;
+    for (int i = 0; i < size; i++)
+        func(array[i]);
 }
+
+#endif

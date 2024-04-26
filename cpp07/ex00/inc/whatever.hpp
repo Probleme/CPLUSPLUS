@@ -1,24 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 13:29:37 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/20 14:34:32 by ataouaf          ###   ########.fr       */
+/*   Created: 2024/04/21 19:42:04 by ataouaf           #+#    #+#             */
+/*   Updated: 2024/04/21 19:44:17 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ScalarConverter.hpp"
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
-int main(int ac, char **av)
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <cmath>
+
+template <typename T>
+
+void swap(T &a, T &b)
 {
-    if (ac != 2)
-    {
-        std::cout << "Usage: ./convert [value]" << std::endl;
-        return 1;
-    }
-    ScalarConverter::convert(av[1]);
-    return 0;
+    T tmp = a;
+    a = b;
+    b = tmp;
 }
+
+template <typename T>
+
+T min(T a, T b)
+{
+    return (a < b ? a : b);
+}
+
+template <typename T>
+
+T max(T a, T b)
+{
+    return (a > b ? a : b);
+}
+
+#endif
