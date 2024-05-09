@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Searializer.cpp                                    :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:30:27 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/02 15:22:45 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/08 09:25:44 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include  "../inc/Serializer.hpp"
 
-Serializer::Serializer()
+Serializer::Serializer() {}
+
+Serializer::~Serializer() {}
+
+Serializer::Serializer(const Serializer &src)
 {
+    *this = src;
 }
 
-Serializer::~Serializer()
+Serializer &Serializer::operator=(const Serializer &)
 {
+    return *this;
 }
 
 uintptr_t Serializer::serialize(Data* ptr)
