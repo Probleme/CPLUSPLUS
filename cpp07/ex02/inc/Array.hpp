@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:39:10 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/26 15:47:53 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/14 09:56:53 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ Array<T>::Array() : _array(NULL), _size(0) {}
 template <typename T>
 Array<T>::Array(unsigned int n)
 {
-    if ((static_cast<int>(n) < 0) || (n == 0))
-        throw std::invalid_argument("Invalid size");
+    if (static_cast<int>(n) < 0)
+        throw std::out_of_range("Negative size");
     _array = new T[n]();
     _size = n;
 }

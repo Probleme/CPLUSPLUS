@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:50:35 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/25 18:44:12 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/15 14:07:18 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T *array, int size, void (*func)(T const &))
+template <typename T, typename F>
+void iter(T *array, size_t length, F func)
 {
-    if (!array || size < 0 || !func)
-        return;
-    for (int i = 0; i < size; i++)
+    if (static_cast<int>(length) < 0)
+        return ;
+    for (size_t i = 0; i < length; i++)
         func(array[i]);
 }
 
