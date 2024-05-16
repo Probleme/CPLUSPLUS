@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:39:10 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/14 09:56:53 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/16 17:10:52 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Array
         Array(Array const &other);
         ~Array();
         Array &operator=(Array const &other);
-        T &operator[](unsigned int index);
+        T &operator[](unsigned int index) const;
         unsigned int size() const;
 };
 
@@ -37,8 +37,6 @@ Array<T>::Array() : _array(NULL), _size(0) {}
 template <typename T>
 Array<T>::Array(unsigned int n)
 {
-    if (static_cast<int>(n) < 0)
-        throw std::out_of_range("Negative size");
     _array = new T[n]();
     _size = n;
 }
@@ -71,7 +69,7 @@ Array<T> &Array<T>::operator=(Array const &other)
 }
 
 template <typename T>
-T &Array<T>::operator[](unsigned int index)
+T &Array<T>::operator[](unsigned int index) const
 {
     if (index >= _size)
         throw std::out_of_range("Index out of range");
