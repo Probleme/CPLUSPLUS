@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:05:26 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/15 14:27:03 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/17 10:46:45 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+
 
 class BitcoinExchange
 {

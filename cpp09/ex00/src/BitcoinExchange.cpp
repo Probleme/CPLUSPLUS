@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:05:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/15 17:01:45 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/17 12:03:59 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void BitcoinExchange::processInput(const std::string& inputFilename)
         {
             if (!isValidDate(date))
             {
-                if (date.size() != 11)
-                    std::cout << "Error: bad input." << std::endl;
-                else if (date != "")
+                if (date != "" && date != " ")
                     std::cout << "Error: bad input => " << date << std::endl;
+                else
+                    std::cout << "Error: bad input." << std::endl;
                 continue;
             }
             if (!isValidValue(valueStr))
@@ -77,7 +77,29 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     int year, month, day;
     char sep1, sep2;
     if (ss >> year >> sep1 >> month >> sep2 >> day && sep1 == '-' && sep2 == '-' && month >= 1 && month <= 12 && day >= 1 && day <= 31 && year >= 2009 && year <= 2022)
+    {
+        if (month == 2)
+        {
+            bool isLeap = false;
+            if (year % 4 == 0)
+            {
+                if (year % 100 != 0) 
+                    isLeap = true;
+                else if (year % 400 == 0)
+                    isLeap = true;
+            }
+            int maxDay = isLeap? 29 : 28;
+            if (day > maxDay)
+                return false; 
+        }
+        else if (month == 4 || month == 6 || month == 9 || month == 11)
+        {
+            if (day > 30)
+                return false;
+        }
+        
         return true;
+    }
     return false;
 }
 

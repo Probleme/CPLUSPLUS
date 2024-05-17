@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:09:14 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/27 12:16:25 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/17 13:53:28 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main()
 {
     try
     {
-        Span sp = Span(20);
+        Span sp = Span(5);
         sp.addNumber(6);
         sp.addNumber(3);
         sp.addNumber(17);

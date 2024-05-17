@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:03:14 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/04/27 12:11:17 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/17 13:43:58 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,12 @@ class Span
         void addNumber(int n);
         int shortestSpan();
         int longestSpan();
-        class FullContainerException : public std::exception
-        {
-            public:
-                virtual const char *what() const throw();
-        };
-        class NoSpanException : public std::exception
-        {
-            public:
-                virtual const char *what() const throw();
-        };
+        
         template <typename Iterator>
         void addRange(Iterator begin, Iterator end)
         {
             if (this->_v.size() + std::distance(begin, end) > this->_n)
-                throw Span::FullContainerException();
+                throw std::out_of_range("Span is full");
             this->_v.insert(this->_v.end(), begin, end);
         }
 };
