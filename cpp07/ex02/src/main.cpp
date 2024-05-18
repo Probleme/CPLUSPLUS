@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:42:40 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/14 10:21:43 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/18 10:20:00 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,6 @@ int main()
         for (unsigned int i = 0; i < h.size(); i++)
             std::cout << h[i] << " ";
         std::cout << std::endl;
-
-        Array<int> e(-1);
-        std::cout << "Array e: ";
-        for (unsigned int i = 0; i < e.size(); i++)
-            std::cout << e[i] << " ";
-        std::cout << std::endl;
-        
     }
     catch (std::exception &e)
     {

@@ -6,11 +6,11 @@
 #    By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 19:38:19 by ataouaf           #+#    #+#              #
-#    Updated: 2024/05/12 14:17:45 by ataouaf          ###   ########.fr        #
+#    Updated: 2024/05/18 10:19:26 by ataouaf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = c++ -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CC = c++ -Wall -Wextra -Werror -std=c++98
 NAME = execute
 OBJECTS = ./obj
 INCLUDES = ./inc
