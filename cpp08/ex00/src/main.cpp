@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:50:58 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/17 13:25:23 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/05/18 13:14:11 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int main()
     try
     {
         std::cout << ::easyfind(d, 5) << std::endl;
-        std::cout << ::easyfind(d, 42) << std::endl;
+        std::cout << ::easyfind(d, -42) << std::endl;
     }
     catch (std::exception &e)
     {
