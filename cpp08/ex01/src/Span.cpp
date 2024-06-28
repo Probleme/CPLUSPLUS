@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:04:07 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/18 11:10:54 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/06/27 10:08:02 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,10 @@ int Span::shortestSpan()
     if (this->_v.size() <= 1)
         throw std::logic_error("No span to find");
     std::sort(this->_v.begin(), this->_v.end());
-    // int min = this->_v[1] - this->_v[0];
-    int min = std::numeric_limits<int>::max();
+    int min = this->_v[1] - this->_v[0];
     for (size_t i = 1; i < this->_v.size(); i++)
-    {
-        int diff = this->_v[i] - this->_v[i - 1];
-        if (diff < min)
-            min = diff;
-        // if (this->_v[i] - this->_v[i - 1] < min)
-        //     min = this->_v[i] - this->_v[i - 1];
-    }
+        if (this->_v[i] - this->_v[i - 1] < min)
+            min = this->_v[i] - this->_v[i - 1];
     return min;
 }
 
