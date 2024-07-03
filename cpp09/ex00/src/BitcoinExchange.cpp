@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:05:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/17 12:03:59 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/06/28 13:16:08 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ void BitcoinExchange::processInput(const std::string& inputFilename)
         throw std::runtime_error("Error: could not open file.");
     std::string line;
     std::getline(file, line);
-    if (line != "date | value")
+    if (line != "date | value" )
         throw std::runtime_error("Error: bad input file.");
     while (std::getline(file, line))
     {
+        if (line == "date | value" || line == "" || line == " ")
+        {
+            std::cout << "Error: bad input => date | value" << std::endl;
+            continue;
+        }
         std::istringstream ss(line);
         std::string date, valueStr;
         if (std::getline(ss, date, '|') && std::getline(ss >> std::ws, valueStr))
@@ -60,10 +65,13 @@ void BitcoinExchange::processInput(const std::string& inputFilename)
                     std::cout << "Error: too large a number." << std::endl;
                 continue;
             }
-            double value = std::strtod(valueStr.c_str(), NULL);
+            ss.clear();
+            ss.str(valueStr);
+            double value;
+            ss >> value;
             std::string closestDate = getClosestDate(date);
             double price = _database.at(closestDate);
-            std::cout << date << " => " << valueStr << " = " << std::fixed << std::setprecision(2) << value * price << std::endl;
+            std::cout << date << " => " << valueStr << " = " <<  value * price << std::endl;
         }
         else if (valueStr.empty() && date != "")
             std::cout << "Error: bad input => " << date << std::endl;
