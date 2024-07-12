@@ -96,13 +96,13 @@ void PmergeMe::mergeInsertSortDeque(std::deque<std::pair<int, int> > &pairs)
     _sorted_deque.insert(_sorted_deque.begin(), pairs[0].second);
     for (size_t i = 1; i < pairs.size(); i++)
     {
-        std::list<int >::iterator it = std::upper_bound(_sorted_deque.begin(), _sorted_deque.end(), pairs[i].second);
-        _sorted_deque.insert(it, pairs[i].second);
+        std::deque<int >::iterator it = std::upper_bound(_sorted_deque.begin(), _sorted_deque.end(), pairs[i].second);
+        _sorted_deque.insert(it, pairs[i].second); 
     }
-    if (_sorted_deque.size() % 2)
+    if (_deque.size() % 2)
     {
-        std::list<int >::iterator it = std::upper_bound(_sorted_deque.begin(), _sorted_deque.end(), pairs[pairs.size() - 1].second);
-        _sorted_deque.insert(it, pairs[pairs.size() - 1].second);
+        std::deque<int >::iterator it = std::upper_bound(_sorted_deque.begin(), _sorted_deque.end(), _deque.back());
+        _sorted_deque.insert(it, _deque.back());
     }
 }
 
@@ -113,32 +113,16 @@ void PmergeMe::mergeInsertSortVec(std::vector<std::pair<int, int> > &pairs)
     std::sort(pairs.begin(), pairs.end());
     for (size_t i = 0; i < pairs.size(); ++i)
         _sorted_vec.push_back(pairs[i].first);
-    std::vector<int> jacob_vec;
-    jacobSthal(jacob_vec, pairs.size());
     _sorted_vec.insert(_sorted_vec.begin(), pairs[0].second);
-    std::cout << "Beforeeee: ";
-    for (std::vector<int>::iterator it = _sorted_vec.begin(); it != _sorted_vec.end(); ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-    std::cout << "vector pairs second: ";
-    for (size_t i = 0; i < pairs.size(); i++)
-        std::cout << pairs[i].second << " ";
-    std::cout << std::endl;
-    for (size_t i = 1; i < jacob_vec.size(); i++)
+    for (size_t i = 1; i < pairs.size(); i++)
     {
-        for (int j = jacob_vec[i]; j > jacob_vec[i - 1]; --j)
-        {
-            std::vector<int >::iterator it = std::upper_bound(_sorted_vec.begin(), _sorted_vec.end(), pairs[j].second);
-            _sorted_vec.insert(it, pairs[j].second);
-            std::cout << "Inserting " << pairs[j].second << std::endl;
-        }
-        // std::vector<int >::iterator it = std::upper_bound(_sorted_vec.begin(), _sorted_vec.end(), pairs[i].second);
-        // _sorted_vec.insert(it, pairs[i].second);
+        std::vector<int >::iterator it = std::upper_bound(_sorted_vec.begin(), _sorted_vec.end(), pairs[i].second);
+        _sorted_vec.insert(it, pairs[i].second);
     }
-    if (_sorted_vec.size() % 2)
+    if (_vec.size() % 2 == 1)
     {
-        std::vector<int >::iterator it = std::upper_bound(_sorted_vec.begin(), _sorted_vec.end(), pairs[pairs.size() - 1].second);
-        _sorted_vec.insert(it, pairs[pairs.size() - 1].second);
+        std::vector<int >::iterator it = std::upper_bound(_sorted_vec.begin(), _sorted_vec.end(), _vec.back());
+        _sorted_vec.insert(it, _vec.back());
     }
     std::cout << "After: ";
     for (std::vector<int>::iterator it = _sorted_vec.begin(); it != _sorted_vec.end(); ++it)
@@ -154,24 +138,4 @@ std::vector<int> PmergeMe::getVector() const
 std::deque<int> PmergeMe::getDeque() const
 {
     return _deque;
-}
-
-void PmergeMe::jacobSthal(std::vector<int> &jacob, int nbr)
-{
-    if (nbr == 0)
-        return;
-    jacob.push_back(0);
-    if (nbr == 1)
-        return;
-    jacob.push_back(1);
-    for (int i = 2; ; i++)
-    {
-        int tmp = jacob[i - 1] + 2 * jacob[i - 2];
-        if (tmp <= nbr)
-        {
-            jacob.push_back(tmp);
-        }
-        else
-            return;
-    }
 }

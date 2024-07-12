@@ -29,7 +29,7 @@ class PmergeMe
         std::vector<int> _vec;
         std::deque<int> _deque;
         std::vector<int> _sorted_vec;
-        std::list<int> _sorted_deque;
+        std::deque<int> _sorted_deque;
     public:
         PmergeMe();
         PmergeMe(PmergeMe const &src);
