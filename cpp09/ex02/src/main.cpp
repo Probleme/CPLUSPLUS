@@ -19,32 +19,25 @@ int main(int argc, char** argv)
         std::cerr << "Error: not enough arguments" << std::endl;
         return 1;
     }
-    PmergeMe pmm(argc, argv);
-    std::vector<std::pair<int, int> > pairs;
-    std::vector<int> vec = pmm.getVector();
-    std::list<int> lst = pmm.getList();
-    pairs = pmm.getPairs(vec);
-    pairs = pmm.getLargestPair(vec);
+    PmergeMe pmm;
     std::cout << "Before: ";
-    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-
     clock_t start = clock();
-    pmm.mergeInsertSort(pairs);
-    clock_t end = clock();
-    for (std::vector<std::pair<int, int> >::iterator it = pairs.begin(); it != pairs.end(); ++it)
-        std::cout << it->first << " " << it->second << std::endl;
-    std::cout << "After: ";
+    pmm.launch(argc, argv);
+    std::vector<int> vec = pmm.getVector();
     for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
-    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << (double)(end - start) / CLOCKS_PER_SEC * 1e6 << " us" << std::endl;
-
-    // start = clock();
-    // pmm.mergeInsertSort(lst);
-    // end = clock();
-    // std::cout << "Time to process a range of " << lst.size() << " elements with std::list: " << (double)(end - start) / CLOCKS_PER_SEC * 1e6 << " us" << std::endl;
-
+    std::vector<std::pair<int, int> > pairs_vec;
+    pairs_vec = pmm.makePairVect(vec);
+    pmm.mergeInsertSortVec(pairs_vec);
+    clock_t end = clock();;
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: " << (double)(end - start) / CLOCKS_PER_SEC * 1000 << " ms" << std::endl;
+    
+    clock_t start2 = clock();
+    std::deque<int> deque = pmm.getDeque();
+    std::deque<std::pair<int, int> > pairs_deque = pmm.makePairDeque(deque);
+    pmm.mergeInsertSortDeque(pairs_deque);
+    clock_t end2 = clock();
+    std::cout << "Time to process a range of " << deque.size() << " elements with std::deque: " << (double)(end2 - start2) / CLOCKS_PER_SEC * 1000 << " ms" << std::endl;
     return 0;
 }

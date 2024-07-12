@@ -20,24 +20,30 @@
 #include <string>
 #include <time.h>
 #include <sstream>
+#include <deque>
+#include <iterator>
 
 class PmergeMe
 {
     private:
         std::vector<int> _vec;
-        std::list<int> _lst;
+        std::deque<int> _deque;
+        std::vector<int> _sorted_vec;
+        std::list<int> _sorted_deque;
     public:
         PmergeMe();
-        PmergeMe(int ac, char **av);
         PmergeMe(PmergeMe const &src);
         ~PmergeMe();
+        void launch(int ac, char **av);
         PmergeMe &operator=(PmergeMe const &rhs);
-        std::vector<std::pair<int, int> > getPairs(std::vector<int> &vec);
-        std::vector<std::pair<int, int> > getLargestPair(std::vector<int> &vec);
-        void mergeInsertSort(std::vector<std::pair<int, int> > &pairs);
+        std::vector<std::pair<int, int> > makePairVect(std::vector<int> &vec);
+        std::deque<std::pair<int, int> > makePairDeque(std::deque<int> &deque);
+        void mergeInsertSortVec(std::vector<std::pair<int, int> > &pairs);
+        void mergeInsertSortDeque(std::deque<std::pair<int, int> > &pairs);
+        void jacobSthal(std::vector<int> &jacob, int nbr);
         
         std::vector<int> getVector() const;
-        std::list<int> getList() const;
+        std::deque<int> getDeque() const;
 };
 
 #endif
