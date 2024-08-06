@@ -40,10 +40,11 @@ class PmergeMe
         std::deque<std::pair<int, int> > makePairDeque(std::deque<int> &deque);
         void mergeInsertSortVec(std::vector<std::pair<int, int> > &pairs);
         void mergeInsertSortDeque(std::deque<std::pair<int, int> > &pairs);
-        void jacobSthal(std::vector<int> &jacob, int nbr);
-        
-        std::vector<int> getVector() const;
-        std::deque<int> getDeque() const;
+        void jacobSthalVec(std::vector<int> &jacob, int nbr);
+        void jacobSthalDeque(std::deque<int> &jacob, int nbr);
+        void combinIndex(std::vector<int> &Jsequence, std::vector<int> &res_index);
+        void combinIndex(std::deque<int> &Jsequence, std::deque<int> &res_index);
+
 };
 
 #endif
