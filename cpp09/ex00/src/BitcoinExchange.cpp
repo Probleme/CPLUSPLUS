@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:05:17 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/06/28 13:16:08 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:02:22 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,21 @@ BitcoinExchange::BitcoinExchange(const std::string& dbFilename)
     if (!file.is_open())
         throw std::runtime_error("Error: could not open file.");
     std::string line;
+    std::getline(file, line);
+    if (line != "date,exchange_rate")
+        throw std::runtime_error("Error: invalid database format.");
     while (std::getline(file, line))
     {
+        if (line.empty())
+            continue;
         std::istringstream ss(line);
         std::string date;
         double price = 0.0;
         if (std::getline(ss, date, ',') && (ss >> price))
             _database[date] = price;
     }
+    if (_database.empty())
+        throw std::runtime_error("Error: empty database.");
     file.close();
 }
 
@@ -38,43 +45,48 @@ void BitcoinExchange::processInput(const std::string& inputFilename)
     std::getline(file, line);
     if (line != "date | value" )
         throw std::runtime_error("Error: bad input file.");
-    while (std::getline(file, line))
+    while (std::getline(file >> std::ws, line))
     {
-        if (line == "date | value" || line == "" || line == " ")
-        {
-            std::cout << "Error: bad input => date | value" << std::endl;
-            continue;
-        }
         std::istringstream ss(line);
         std::string date, valueStr;
-        if (std::getline(ss, date, '|') && std::getline(ss >> std::ws, valueStr))
+        if (std::getline(ss >> std::ws, date, '|') && std::getline(ss >> std::ws, valueStr))
         {
             if (!isValidDate(date))
             {
-                if (date != "" && date != " ")
+                if (date != "")
                     std::cout << "Error: bad input => " << date << std::endl;
                 else
                     std::cout << "Error: bad input." << std::endl;
                 continue;
             }
-            if (!isValidValue(valueStr))
-            {
-                if (valueStr.find_first_not_of("0123456789.") != std::string::npos)
-                    std::cout << "Error: not a positive number." << std::endl;
-                else
-                    std::cout << "Error: too large a number." << std::endl;
-                continue;
-            }
+            date = date.substr(0, date.find_last_not_of(" \t") + 1);
+            valueStr = valueStr.substr(0, valueStr.find_last_not_of(" \t") + 1);
             ss.clear();
             ss.str(valueStr);
             double value;
-            ss >> value;
+            if (!(ss >> value) || ss.eof() == false)
+            {
+                std::cout << "Error: bad input => " << valueStr << std::endl;
+                continue;
+            }
+            if (value < 0)
+            {
+                std::cout << "Error: not a positive number." << std::endl;
+                continue;
+            }
+            else if (value > 1000)
+            {
+                std::cout << "Error: too large a number." << std::endl;
+                continue;
+            }
             std::string closestDate = getClosestDate(date);
             double price = _database.at(closestDate);
             std::cout << date << " => " << valueStr << " = " <<  value * price << std::endl;
         }
-        else if (valueStr.empty() && date != "")
+        else if (!date.empty())
             std::cout << "Error: bad input => " << date << std::endl;
+        else
+            std::cout << "Error: bad input." << std::endl;
     }
     file.close();
 }
@@ -84,18 +96,19 @@ bool BitcoinExchange::isValidDate(const std::string& date)
     std::istringstream ss(date);
     int year, month, day;
     char sep1, sep2;
-    if (ss >> year >> sep1 >> month >> sep2 >> day && sep1 == '-' && sep2 == '-' && month >= 1 && month <= 12 && day >= 1 && day <= 31 && year >= 2009 && year <= 2022)
+    if (!(ss >> year >> sep1 >> month >> sep2 >> day) || 
+        sep1 != '-' || sep2 != '-' ||
+        year < 2009 || year > 2022 ||
+        month < 1 || month > 12 ||
+        day < 1 || day > 31)
+        return false;
+    else
     {
         if (month == 2)
         {
             bool isLeap = false;
-            if (year % 4 == 0)
-            {
-                if (year % 100 != 0) 
-                    isLeap = true;
-                else if (year % 400 == 0)
-                    isLeap = true;
-            }
+            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+                isLeap = true;
             int maxDay = isLeap? 29 : 28;
             if (day > maxDay)
                 return false; 
@@ -105,18 +118,8 @@ bool BitcoinExchange::isValidDate(const std::string& date)
             if (day > 30)
                 return false;
         }
-        
         return true;
     }
-    return false;
-}
-
-bool BitcoinExchange::isValidValue(const std::string& value)
-{
-    std::istringstream ss(value);
-    double val;
-    if (ss >> val && val >= 0 && val <= 1000)
-        return true;
     return false;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 17:04:31 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/16 15:09:44 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/10/29 14:31:35 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ RPN::RPN(const std::string& input)
         {
             std::istringstream iss(token);
             int operand;
-            if (!(iss >> operand))
-                throw std::runtime_error("Error: invalid expression");
+            if (!(iss >> operand) || operand < 0 || operand >= 10)
+                throw std::runtime_error("Error");
             _stack.push(operand);
         }
     }

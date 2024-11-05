@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:23:30 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/07/03 10:09:33 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/10/30 12:06:10 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <sstream>
 #include <deque>
 #include <iterator>
+#include <sys/time.h>
 
 class PmergeMe
 {
@@ -30,20 +31,16 @@ class PmergeMe
         std::deque<int> _deque;
         std::vector<int> _sorted_vec;
         std::deque<int> _sorted_deque;
+        std::vector<std::pair<int, int> > makePairVect(std::vector<int> &vec);
+        std::deque<std::pair<int, int> > makePairDeque(std::deque<int> &deque);
+        void mergeInsertSortVec(std::vector<std::pair<int, int> > &pairs);
+        void mergeInsertSortDeque(std::deque<std::pair<int, int> > &pairs);
     public:
         PmergeMe();
         PmergeMe(PmergeMe const &src);
         ~PmergeMe();
         void launch(int ac, char **av);
         PmergeMe &operator=(PmergeMe const &rhs);
-        std::vector<std::pair<int, int> > makePairVect(std::vector<int> &vec);
-        std::deque<std::pair<int, int> > makePairDeque(std::deque<int> &deque);
-        void mergeInsertSortVec(std::vector<std::pair<int, int> > &pairs);
-        void mergeInsertSortDeque(std::deque<std::pair<int, int> > &pairs);
-        void jacobSthalVec(std::vector<int> &jacob, int nbr);
-        void jacobSthalDeque(std::deque<int> &jacob, int nbr);
-        void combinIndex(std::vector<int> &Jsequence, std::vector<int> &res_index);
-        void combinIndex(std::deque<int> &Jsequence, std::deque<int> &res_index);
 
 };
 

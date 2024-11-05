@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:19:49 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/07/03 11:14:46 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/10/30 11:45:22 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int argc, char** argv)
     }
     catch(const std::exception& e)
     {
-        std::cerr << "Error: invalid argument" << std::endl;
+        std::cerr  << e.what() << std::endl;
         return 1;
     }
     

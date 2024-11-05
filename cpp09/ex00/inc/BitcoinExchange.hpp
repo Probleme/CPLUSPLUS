@@ -6,7 +6,7 @@
 /*   By: ataouaf <ataouaf@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:05:26 by ataouaf           #+#    #+#             */
-/*   Updated: 2024/05/17 10:46:45 by ataouaf          ###   ########.fr       */
+/*   Updated: 2024/10/29 11:49:47 by ataouaf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ class BitcoinExchange
         ~BitcoinExchange();
         void processInput(const std::string& inputFilename);
         bool isValidDate(const std::string& date);
-        bool isValidValue(const std::string& value);
         std::string getClosestDate(const std::string& date);
 };
 

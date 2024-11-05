@@ -16,7 +16,7 @@ int main(int ac, char **av)
 {
     if (ac != 2)
     {
-        std::cerr << "Usage: ./btc [filename]" << std::endl;
+        std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
     try
